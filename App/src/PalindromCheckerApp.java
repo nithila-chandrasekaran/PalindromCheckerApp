@@ -1,22 +1,27 @@
-public class HardcodedPalindrome {
+public class UseCase3PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string
-        String word = "madam";
+        // Original string
+        String original = "madam";
 
-        // Reverse the string
-        String reverse = "";
+        // Variable to store reversed string
+        String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reverse = reverse + word.charAt(i);
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Check palindrome using if-else
-        if (word.equals(reverse)) {
-            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        // Compare original and reversed string
+        if (original.equals(reversed)) {
+            System.out.println("Original String: " + original);
+            System.out.println("Reversed String: " + reversed);
+            System.out.println("Result: The string is a Palindrome");
         } else {
-            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Original String: " + original);
+            System.out.println("Reversed String: " + reversed);
+            System.out.println("Result: The string is NOT a Palindrome");
         }
 
     }
