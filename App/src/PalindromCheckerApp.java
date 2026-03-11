@@ -1,37 +1,44 @@
 import java.util.Stack;
 
+import java.util.*;
+
 public class PalindromCheckerApp {
 
     public static void main(String[] args) {
 
-        // Original string
-        String text = "madam";
+        Scanner sc = new Scanner(System.in);
 
-        // Create a stack
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into the stack
-        for (int i = 0; i < text.length(); i++) {
-            stack.push(text.charAt(i));
+        // Insert characters into queue and stack
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            queue.add(ch);      // Enqueue
+            stack.push(ch);     // Push
         }
 
-        // Variable to store reversed string
-        String reversed = "";
+        boolean isPalindrome = true;
 
-        // Pop characters from stack
-        while (!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+        // Compare dequeue and pop
+        while (!queue.isEmpty()) {
+            char qChar = queue.remove();   // Dequeue
+            char sChar = stack.pop();      // Pop
+
+            if (qChar != sChar) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Compare original and reversed string
-        if (text.equals(reversed)) {
-            System.out.println("Original String: " + text);
-            System.out.println("Reversed String: " + reversed);
-            System.out.println("Result: The string is a Palindrome");
-        } else {
-            System.out.println("Original String: " + text);
-            System.out.println("Reversed String: " + reversed);
-            System.out.println("Result: The string is NOT a Palindrome");
-        }
+        if (isPalindrome)
+            System.out.println("The string is a Palindrome");
+        else
+            System.out.println("The string is NOT a Palindrome");
+
+        sc.close();
     }
 }
