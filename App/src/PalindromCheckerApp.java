@@ -2,6 +2,8 @@ import java.util.Stack;
 
 import java.util.*;
 
+import java.util.*;
+
 public class PalindromCheckerApp {
 
     public static void main(String[] args) {
@@ -11,29 +13,27 @@ public class PalindromCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Insert characters into queue and stack
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);      // Enqueue
-            stack.push(ch);     // Push
+            deque.addLast(input.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue and pop
-        while (!queue.isEmpty()) {
-            char qChar = queue.remove();   // Dequeue
-            char sChar = stack.pop();      // Pop
+        // Compare front and rear characters
+        while (deque.size() > 1) {
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
 
-            if (qChar != sChar) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
         }
 
+        // Print result
         if (isPalindrome)
             System.out.println("The string is a Palindrome");
         else
